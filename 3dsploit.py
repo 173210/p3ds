@@ -33,7 +33,7 @@ def request(r, id, req, port):
 
 def main(argv):
 	# Fill ARM payload here (pls size aligned to 4 bytes, base @ 0x080C3EE0):
-	PAYLOAD = ""
+	PAYLOAD = open(argv[0], "rb").read()
 
 	r = ROP(0x002B0000)
 
@@ -102,7 +102,7 @@ def main(argv):
 
 	#hexdump(rop, base=0x2B0000)
 
-	with open(argv[0], "wb") as f:
+	with open(argv[1], "wb") as f:
 		f.write(rop)
 
 if __name__ == "__main__":
